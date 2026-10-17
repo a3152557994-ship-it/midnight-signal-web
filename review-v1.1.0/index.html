@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#122638"><title>午夜信号 · Midnight Signal</title><link rel="stylesheet" href="style.css?v=d56515c21193"><script src="config.js?v=0dfe11e5bbc2" defer></script><script src="engine.js?v=f8b0d50e6bca" defer></script><script src="storage.js?v=b4c8172712a8" defer></script><script src="levels.js?v=9d014322a73f" defer></script><script src="app.js?v=125c8aae0a6a" defer></script></head>
+<body>
+<div class="station">
+  <header class="station-header"><div class="identity"><svg class="station-mark" viewBox="0 0 50 50" aria-hidden="true"><path d="M7 30h9l7-17 7 27 6-17h8"/></svg><div><h1 data-msg="title">午夜信号</h1><p data-msg="subtitle">让夜里的每一条线路重新接通</p></div></div><nav><button id="levels-button" class="small-control" data-msg="channels">选关</button><button id="sound-button" class="small-control" aria-pressed="false">声音关</button><button id="help-button" class="small-control" data-msg="help">玩法</button><select id="language-select" data-aria="language"><option value="auto" data-msg="auto">自动</option><option value="zh" lang="zh-CN">中文</option><option value="en" lang="en">English</option></select></nav></header>
+  <div id="platform-loading" role="status" style="position:fixed;inset:0;z-index:99;background:#122638;color:#e0eef1;display:grid;place-items:center;padding:30px">Connecting to CrazyGames…</div><section class="city-journey" aria-label="City stations"><div class="journey-caption"><span id="district-name"></span><span data-msg="districts">City stations</span></div><div id="journey-stations"></div><div class="journey-track"><i id="journey-fill"></i></div></section><main inert class="console">
+    <aside class="operator-panel">
+      <div class="channel-readout"><span data-msg="channel">频道</span><strong id="channel-number">01</strong><span id="edition-label"></span></div>
+      <h2 id="level-title"></h2><p id="level-brief" class="brief"></p>
+      <div class="goal"><strong data-msg="goalTitle">接通整张线网</strong><p data-msg="goal">转动线路，让每一格通电、所有接收点亮起，并消除琥珀色断口。</p></div>
+      <dl class="readings"><div><dt data-msg="receivers">接收点</dt><dd id="receiver-count"></dd></div><div><dt data-msg="powered">通电线路</dt><dd id="powered-count"></dd></div><div><dt data-msg="openPorts">断口</dt><dd id="leak-count"></dd></div></dl>
+      <div class="run-stats"><span><b id="move-count">0</b> <span data-msg="moves">次旋转</span></span><span><b id="hint-count">0</b> <span data-msg="hints">次提示</span></span></div>
+      <p id="best-score" class="best-score"></p><p id="save-status" class="save-status" role="status"></p>
+    </aside>
+    <section class="wiring-panel" data-aria="boardLabel">
+      <div class="panel-heading"><span class="power-indicator"><i></i><span data-msg="transmitterOnline">电源已就绪</span></span><span id="completed-count"></span></div>
+      <p id="field-guide" class="field-guide" role="status" hidden></p><div class="board-frame"><div id="board" class="board" role="group" data-aria="boardLabel"></div></div>
+      <div class="legend"><span><i class="source-symbol"></i><span data-msg="source">电源</span></span><span><i class="receiver-symbol"></i><span data-msg="receiver">接收点</span></span><span><i class="open-symbol"></i><span data-msg="openPort">断口</span></span><span><i class="lock-symbol">▣</i><span data-msg="fixed">固定</span></span></div>
+      <div class="action-bar"><button id="undo-button" class="action" data-msg="undo">撤销</button><button id="reset-button" class="action" data-msg="reset">重置本关</button><button id="hint-button" class="action hint-action" data-msg="hint">提示一格</button></div>
+      <p class="interaction-note" data-msg="controls">点按顺时针旋转。右键或 Shift＋点按可反转；键盘方向键移动，空格旋转。</p>
+      <section id="result-panel" class="result-panel" aria-live="polite" hidden><div><h2 id="result-title"></h2><p id="result-stars"></p><strong id="result-badge"></strong></div><p id="result-story"></p><div class="result-actions"><button id="continue-channel" class="action hint-action" data-msg="continueChannel">Continue</button><button id="replay-channel" class="action" data-msg="oneMore">Replay</button></div><small id="result-help"></small></section><p id="target-note" class="target-note"></p><div id="signal-status" class="signal-status" aria-live="polite"></div>
+      <button id="next-button" class="next-control" data-msg="next" hidden>下一频道</button>
+      <section id="completion" class="completion" hidden><h2 id="completion-title" tabindex="-1"></h2><p id="completion-copy"></p><button id="completion-channels" class="action" data-msg="chooseAgain">选择频道继续</button><a id="purchase-link" class="action" hidden></a></section>
+    </section>
+  </main>
+  <footer><span data-msg="footer">没有倒计时。慢慢把信号送到。</span><span id="version-label"></span></footer>
+</div>
+<dialog id="levels-dialog"><div class="dialog-head"><div><h2 data-msg="channelsTitle">选择频道</h2><p data-msg="channelsNote">每关单独保存进度；可以自由切换。</p></div><button class="close-dialog" data-aria="close">×</button></div><div id="level-list" class="level-list"></div><div class="dialog-foot"><span data-msg="levelLegend">✓ 已接通　• 有进度</span><button class="action close-dialog" data-msg="close">关闭</button></div></dialog>
+<dialog id="help-dialog"><div class="dialog-head"><h2 data-msg="helpTitle">夜班接线指南</h2><button class="close-dialog" data-aria="close">×</button></div><ol class="help-list"><li data-msg="help1">圆形电源固定不动。点按其他线路，每次顺时针旋转 90°，让相邻接口相接。</li><li data-msg="help2">蓝色线路已经通电，菱形是接收点。所有有线路的格子都要接入同一个电源。</li><li data-msg="help3">琥珀小圆点表示断口。全部接收点亮起且没有断口，才算完成。独立的小圈不能过关。</li><li data-msg="help4">提示会把一格调到正确方向，并记录一次提示。撤销能退回旋转或提示。重置只影响当前关卡。</li><li data-msg="help5">键盘：方向键选择格子，空格或 Enter 旋转，Q 反转。Ctrl/⌘＋Z 撤销。触摸直接点按。</li><li data-msg="help6">接通后会自动进入下一关。完成记录会保留；可随时在选关里重玩。</li></ol><p class="credits" data-msg="credits">原创线路与界面，使用 AI 辅助编程和中英文文案。图形由代码绘制；游玩不联网、不调用 AI。</p><button class="action close-dialog" data-msg="understood">开始接线</button></dialog>
+<dialog id="reset-dialog" class="compact"><div class="dialog-head"><h2 data-msg="resetTitle">重置这个频道？</h2><button class="close-dialog" data-aria="close">×</button></div><p data-msg="resetNote">当前关卡的线路、旋转和提示次数会重置。已完成记录和其他关卡不变。</p><div class="dialog-foot"><button class="action close-dialog" data-msg="cancel">取消</button><button id="confirm-reset" class="action hint-action" data-msg="reset">重置本关</button></div></dialog>
+<div id="toast" role="status" hidden></div><noscript><p>请开启 JavaScript 以游玩。Enable JavaScript to play.</p></noscript>
+</body></html>
