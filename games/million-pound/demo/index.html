@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#152d40">
+  <meta name="description" content="百万英镑初版两日试玩：四次选择，不含2.1人物篇。可返回苹果2.1介绍和购买入口。First-edition demo, not the full Apple 2.1 game.">
+  <title>百万英镑 · 初版两日试玩</title>
+  <link rel="stylesheet" href="style.css?v=apple-funnel-1">
+  <script src="engine.js?v=1.0.1" defer></script><script src="app.js?v=apple-funnel-1" defer></script>
+</head>
+<body>
+<div class="app-shell">
+  <header class="topbar"><a class="wordmark" href="#" id="home-link"><span class="crest">£</span><span><span data-msg="brand">百万英镑</span><small data-msg="demo">初版两日试玩</small></span></a><nav><button class="tool" id="rules-btn" data-msg="rules">玩法</button><button class="tool" id="restart-btn" data-msg="restart">重新试玩</button><select class="tool language-button language-select" id="language-select" aria-label="语言" data-aria="languageLabel"><option value="auto" data-msg="languageAuto">自动</option><option value="zh" lang="zh-CN">中文</option><option value="en" lang="en">English</option></select></nav></header>
+  <aside class="demo-boundary" aria-label="试玩版本与购买说明"><div><strong data-msg="boundaryTitle">初版两日试玩 · 非2.1完整版</strong><p data-msg="boundaryText">两天、四次选择；不含2.1人物篇，规则和画面也有差异。试玩进度与不同渠道的购买权益不互通。</p></div><a class="text-button store-link" href="../#purchase" data-msg="fullShort">返回2.1介绍与苹果购买入口</a></aside>
+  <section id="welcome" class="welcome">
+    <img class="welcome-art" src="london-scene.png" alt="煤气灯下的伦敦街道" data-alt="cityAlt"><div class="welcome-shade"></div>
+    <div class="welcome-content"><p class="welcome-location" data-msg="setting">伦敦，十九世纪末</p><h1><span class="main-title" data-msg="brand">百万英镑</span><span data-msg="demo">初版两日试玩</span></h1><p class="hook" data-msg="hook">全伦敦都以为你是富翁。
+可口袋里的零钱，说的是另一回事。</p><p class="demo-intro" data-msg="intro">先免费走过前两天，做四次选择。那张找不开的百万钞票，会是机会，还是麻烦？</p><div class="welcome-actions"><button id="start-btn" class="primary" data-msg="start">开始免费试玩</button><button id="continue-btn" class="secondary" data-msg="continue" hidden>继续这次试玩</button></div><p class="welcome-meta" data-msg="scope">两天 · 四次选择 · 可反复试玩
+不需购买，不需注册。试玩和完整版的存档相互独立。</p><a class="text-button store-link" href="../#purchase" data-msg="fullLink">查看苹果2.1完整版与购买地区</a></div>
+    <div class="intro-note" aria-hidden="true"><div class="note-border"><span>Bank of England</span><strong>One Million<br>Pounds</strong><span class="note-value">£1,000,000</span><small data-msg="motto">信用从此刻开始。账，总要还。</small></div></div>
+  </section>
+  <main id="game" hidden>
+    <section class="statusbar" id="stats" data-aria="resources"></section>
+    <div class="game-layout">
+      <section class="city"><img class="city-art" src="london-scene.png" alt="煤气灯下的伦敦街道" data-alt="cityAlt"><div class="city-shade"></div><div class="day-label"><span id="day-number"></span><h1 id="day-title"></h1><div id="action-track" class="action-track"></div></div><button id="banknote" class="banknote"><span>Bank of England</span><strong>£1,000,000</strong><small data-msg="noteDue">完整旅程：第七日归还</small></button><div id="places" class="places"></div><div class="city-caption"><span id="city-instruction"></span><span id="save-status" class="save-status"></span></div></section>
+      <section id="story-panel" class="story-panel" aria-live="polite" tabindex="-1"></section>
+    </div>
+    <footer class="game-footer"><span data-msg="footer">初版两日试玩，不含2.1人物篇。苹果购买入口在介绍页。</span><a class="text-button store-link" href="../#purchase" data-msg="fullShort">返回2.1介绍与苹果购买入口</a></footer>
+  </main>
+</div>
+<dialog id="rules-dialog" class="paper-dialog"><div class="dialog-heading"><h2 data-msg="rulesTitle">开始前，只需知道这些</h2><button class="close-dialog" aria-label="关闭" data-aria="close">×</button></div><ol><li data-msg="rule1">这是前两天的免费试玩，每天两次行动。浏览地点不耗行动，做决定才消耗一次。</li><li data-msg="rule2">按钮下会写明收益、代价和门槛。名声可以带来委托和合伙机会，反复展示钞票也会增加欠债、损耗信任。</li><li data-msg="rule3">每晚先收分红，再付 £4 食宿。当天已安排的饭和房间各抵 £2；不足转欠债。欠债每晚计 5% 利息，向上取整，体力恢复 20。</li><li data-msg="rule4">第四次选择后试玩结束，可重玩或返回2.1介绍页选择苹果商店。苹果完整版为独立购买，中国大陆商店当前未供应。</li></ol><p class="small-note" data-msg="saveRule">试玩进度仅保存在本浏览器，和完整版独立。完整版从第一天重新开始。不能将游戏中的英镑兑换成现实钱款。</p><p class="small-note" data-msg="credits">灵感来自马克·吐温《百万英镑》。本游戏使用 AI 辅助编程、文字与英文改写，背景为 AI 生成。游玩时不调用在线 AI。</p><button class="primary close-dialog" data-msg="understood">开始吧</button></dialog>
+<dialog id="restart-dialog" class="paper-dialog compact"><div class="dialog-heading"><h2 data-msg="restartTitle">重新开始这两天？</h2><button class="close-dialog" aria-label="关闭" data-aria="close">×</button></div><p data-msg="restartNote">只会重置这份试玩进度，不影响完整版存档。</p><div class="dialog-actions"><button class="secondary close-dialog" data-msg="cancel">取消</button><button id="confirm-restart" class="primary" data-msg="restart">重新试玩</button></div></dialog>
+<div id="toast" class="toast" role="status" hidden></div>
+<noscript><p class="noscript-note">试玩需要 JavaScript。This demo needs JavaScript.</p></noscript>
+</body>
+</html>
